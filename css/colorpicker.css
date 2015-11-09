@@ -1,3 +1,6 @@
+.switch-hide {
+  display: none;
+}
 .colorpicker-visible,
 .colorpicker-visible .dropdown-menu {
   display: block !important;
@@ -70,6 +73,9 @@ colorpicker-alpha,
 .colorpicker colorpicker-alpha,
 .colorpicker colorpicker-saturation {
   position: relative;
+}
+.colorpicker .switch-hide {
+    display: none;
 }
 .colorpicker input {
   width: 100px;
@@ -160,6 +166,7 @@ colorpicker-alpha,
   left: auto;
   right: -6px;
 }
+
 colorpicker-preview {
   display: block;
   height: 10px;
@@ -167,3 +174,4 @@ colorpicker-preview {
   clear: both;
   background-position: 0 100%;
 }
+

@@ -262,6 +262,14 @@ angular.module('colorpicker.module', [])
         }
       };
     }])
+    .factory('Swatches', function() {
+      'use strict';
+      return {
+        getSwatches: function (elem) {
+
+        },
+      };
+    }),
     .directive('colorpicker', ['$document', '$compile', 'Color', 'Slider', 'Helper', function ($document, $compile, Color, Slider, Helper) {
       'use strict';
       return {
@@ -276,18 +284,25 @@ angular.module('colorpicker.module', [])
               target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
               withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
-              closeButton = !inline ? '<button type="button" class="close close-colorpicker">&times;</button>' : '',
+              closeButton = !inline ? '<button type="button" id="close-colorpicker" class="close close-colorpicker">&times;</button>' : '',
+              switchButton = !inline ? '<button type="button" id="switch-colorpicker">test</button' : '',
               template =
                   '<div class="colorpicker dropdown">' +
                       '<div class="dropdown-menu">' +
-                      '<colorpicker-saturation><i></i></colorpicker-saturation>' +
-                      '<colorpicker-hue><i></i></colorpicker-hue>' +
-                      '<colorpicker-alpha><i></i></colorpicker-alpha>' +
-                      '<colorpicker-preview></colorpicker-preview>' +
-                      inputTemplate +
-                      closeButton +
+                          '<div id="colorpicker-palette">' +
+                              '<colorpicker-saturation><i></i></colorpicker-saturation>' +
+                              '<colorpicker-hue><i></i></colorpicker-hue>' +
+                              '<colorpicker-alpha><i></i></colorpicker-alpha>' +
+                              '<colorpicker-preview></colorpicker-preview>' +
+                              inputTemplate +
+                          '</div>' +
+                          '<div id="colorpicker-swatch">' +
+                              'hi' + 
+                          '</div>' +
+                          closeButton +
+                          switchButton +
                       '</div>' +
-                      '</div>',
+                  '</div>',
               colorpickerTemplate = angular.element(template),
               pickerColor = Color,
               sliderAlpha,
@@ -553,10 +568,33 @@ angular.module('colorpicker.module', [])
             }
           };
 
-          colorpickerTemplate.find('button').on('click', function () {
+          var switchColorpickerView = function() {
+            console.log("switching view");
+            var paletteElement = angular.element(document.getElementById("colorpicker-palette"));
+            var swatchElement = angular.element(document.getElementById("colorpicker-swatch"));
+
+            if (paletteElement.css('display') == 'none') {
+              paletteElement.css('display','block');
+              swatchElement.css('display','none');
+            }
+            else {
+              paletteElement.css('display','none');
+              swatchElement.css('display','block');
+            }
+          };
+
+          var closeButtonElement = document.getElementById("close-colorpicker");
+
+          angular.element(closeButtonElement).on('click', function() {
             hideColorpickerTemplate();
           });
 
+          var switchButtonElement = document.getElementById("switch-colorpicker");
+
+          angular.element(switchButtonElement).on('click', function() {
+            switchColorpickerView();
+          });
+          
           if (attrs.colorpickerIsOpen) {
             $scope.$watch(attrs.colorpickerIsOpen, function(shouldBeOpen) {
 
