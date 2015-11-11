@@ -267,7 +267,7 @@ angular.module('colorpicker.module', [])
       return {
         getSwatches: function (elem) {
           console.log("hi");
-        },
+        }
       };
     }),
     .directive('colorpicker', ['$document', '$compile', 'Color', 'Slider', 'Helper', function ($document, $compile, Color, Slider, Helper) {
