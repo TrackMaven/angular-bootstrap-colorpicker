@@ -275,9 +275,11 @@ angular.module('colorpicker.module', [])
       return {
         require: '?ngModel',
         restrict: 'A',
+        scope: {
+            normalizeGraph: '&'
+        },
         link: function ($scope, elem, attrs, ngModel) {
           var
-              callback = attrs.callback ? attrs.callback : console.log('error'),
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'bottom',
               inline = angular.isDefined(attrs.colorpickerInline) ? attrs.colorpickerInline : false,
@@ -325,8 +327,8 @@ angular.module('colorpicker.module', [])
                   elem.val(newColor);
                   if(ngModel) {
                     $scope.$apply(ngModel.$setViewValue(newColor));
-                    console.log(callback);
-                    callback();
+                    console.log('being called');
+                    $scope.normalizeGraph();
                   }
                   event.stopPropagation();
                   event.preventDefault();
@@ -447,8 +449,8 @@ angular.module('colorpicker.module', [])
             if(ngModel) {
               $scope.$apply(ngModel.$setViewValue(newColor));
               console.log('wtf');
-              console.log(callback);
-              callback();
+              console.log($scope.normalizeGraph);
+              $scope.normalizeGraph();
             }
             if (withInput) {
               pickerColorInput.val(newColor);
