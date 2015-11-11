@@ -289,7 +289,7 @@ angular.module('colorpicker.module', [])
               template =
                   '<div class="colorpicker dropdown">' +
                       '<div class="dropdown-menu">' +
-                          '<div id="colorpicker-palette">' +
+                          '<div style="{display:none;}" id="colorpicker-palette">' +
                               '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                               '<colorpicker-hue><i></i></colorpicker-hue>' +
                               '<colorpicker-alpha><i></i></colorpicker-alpha>' +
