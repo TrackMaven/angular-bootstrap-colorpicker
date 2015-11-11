@@ -324,9 +324,7 @@ angular.module('colorpicker.module', [])
                   elem.val(newColor);
                   if(ngModel) {
                     $scope.$apply(ngModel.$setViewValue(newColor));
-                    console.log($rootScope);
-                    $rootScope.$broadcast('colorChange', 'test');
-                    console.log('being called');
+                    $rootScope.$broadcast('colorChange');
                   }
                   event.stopPropagation();
                   event.preventDefault();
@@ -447,7 +445,6 @@ angular.module('colorpicker.module', [])
             if(ngModel) {
               $scope.$apply(ngModel.$setViewValue(newColor));
               $rootScope.$broadcast('colorChange', 'test');
-              console.log('wtf');
 
             }
             if (withInput) {
