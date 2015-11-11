@@ -269,7 +269,7 @@ angular.module('colorpicker.module', [])
           console.log("hi");
         }
       };
-    }),
+    })
     .directive('colorpicker', ['$document', '$compile', 'Color', 'Slider', 'Helper', function ($document, $compile, Color, Slider, Helper) {
       'use strict';
       return {
