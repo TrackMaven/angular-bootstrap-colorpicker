@@ -270,15 +270,12 @@ angular.module('colorpicker.module', [])
         }
       };
     })
-    .directive('colorpicker', ['$document', '$compile', 'Color', 'Slider', 'Helper', function ($document, $compile, Color, Slider, Helper) {
+    .directive('colorpicker', ['$document', '$compile', '$rootScope', 'Color', 'Slider', 'Helper', function ($document, $compile, $rootScope, Color, Slider, Helper) {
       'use strict';
       return {
         require: '?ngModel',
         restrict: 'A',
-        scope: {
-            normalizeGraph: '&'
-        },
-        link: function ($scope, elem, attrs, ngModel) {
+        link: function ($scope, elem, attrs, ngModel, $rootScope) {
           var
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'bottom',
@@ -327,8 +324,8 @@ angular.module('colorpicker.module', [])
                   elem.val(newColor);
                   if(ngModel) {
                     $scope.$apply(ngModel.$setViewValue(newColor));
+                    $rootScope.$broadcast('colorChange', 'test');
                     console.log('being called');
-                    $scope.normalizeGraph();
                   }
                   event.stopPropagation();
                   event.preventDefault();
@@ -448,9 +445,9 @@ angular.module('colorpicker.module', [])
             elem.val(newColor);
             if(ngModel) {
               $scope.$apply(ngModel.$setViewValue(newColor));
+              $rootScope.$broadcast('colorChange', 'test');
               console.log('wtf');
-              console.log($scope.normalizeGraph);
-              $scope.normalizeGraph();
+
             }
             if (withInput) {
               pickerColorInput.val(newColor);
