@@ -277,6 +277,7 @@ angular.module('colorpicker.module', [])
         restrict: 'A',
         link: function ($scope, elem, attrs, ngModel) {
           var
+              callback = attrs.callback ? attrs.callback : console.log('error'),
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'bottom',
               inline = angular.isDefined(attrs.colorpickerInline) ? attrs.colorpickerInline : false,
@@ -324,6 +325,7 @@ angular.module('colorpicker.module', [])
                   elem.val(newColor);
                   if(ngModel) {
                     $scope.$apply(ngModel.$setViewValue(newColor));
+                    callback()
                   }
                   event.stopPropagation();
                   event.preventDefault();
