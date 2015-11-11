@@ -266,7 +266,7 @@ angular.module('colorpicker.module', [])
       'use strict';
       return {
         getSwatches: function (elem) {
-
+          console.log("hi");
         },
       };
     }),
