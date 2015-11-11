@@ -275,7 +275,7 @@ angular.module('colorpicker.module', [])
       return {
         require: '?ngModel',
         restrict: 'A',
-        link: function ($scope, elem, attrs, ngModel, $rootScope) {
+        link: function ($scope, elem, attrs, ngModel) {
           var
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'bottom',
@@ -324,7 +324,8 @@ angular.module('colorpicker.module', [])
                   elem.val(newColor);
                   if(ngModel) {
                     $scope.$apply(ngModel.$setViewValue(newColor));
-                    $scope.$broadcast('colorChange', 'test');
+                    console.log($rootScope);
+                    $rootScope.$broadcast('colorChange', 'test');
                     console.log('being called');
                   }
                   event.stopPropagation();
@@ -445,7 +446,7 @@ angular.module('colorpicker.module', [])
             elem.val(newColor);
             if(ngModel) {
               $scope.$apply(ngModel.$setViewValue(newColor));
-              $scope.$broadcast('colorChange', 'test');
+              $rootScope.$broadcast('colorChange', 'test');
               console.log('wtf');
 
             }
