@@ -446,6 +446,9 @@ angular.module('colorpicker.module', [])
             elem.val(newColor);
             if(ngModel) {
               $scope.$apply(ngModel.$setViewValue(newColor));
+              console.log('wtf');
+              console.log(callback);
+              callback();
             }
             if (withInput) {
               pickerColorInput.val(newColor);
