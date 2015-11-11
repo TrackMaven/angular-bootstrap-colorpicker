@@ -325,7 +325,8 @@ angular.module('colorpicker.module', [])
                   elem.val(newColor);
                   if(ngModel) {
                     $scope.$apply(ngModel.$setViewValue(newColor));
-                    callback()
+                    console.log(callback);
+                    callback();
                   }
                   event.stopPropagation();
                   event.preventDefault();
