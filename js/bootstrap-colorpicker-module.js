@@ -267,6 +267,7 @@ angular.module('colorpicker.module', [])
       return {
         getSwatches: function (elem) {
           console.log("hi");
+
         }
       };
     })
@@ -296,8 +297,8 @@ angular.module('colorpicker.module', [])
                               '<colorpicker-preview></colorpicker-preview>' +
                               inputTemplate +
                           '</div>' +
-                          '<div id="colorpicker-swatch">' +
-                              'hi' + 
+                          '<div id="colorpicker-swatch" ng-repeat="n in [1,2,3]">' +
+                              'hi' +  {{ n }} + 
                           '</div>' +
                           closeButton +
                           switchButton +
