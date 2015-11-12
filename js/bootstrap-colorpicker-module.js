@@ -299,7 +299,7 @@ angular.module('colorpicker.module', [])
                           '</div>' +
                           '<div id="colorpicker-swatch">' +
                             '<div ng-repeat="n in [1,2,3]">' + 
-                              '{{ n }}' + 
+                              '<span ng-bind="n"></span>'+ 
                             '</div>' + 
                           '</div>' +
                           closeButton +
