@@ -264,20 +264,29 @@ angular.module('colorpicker.module', [])
     }])
     .factory('Swatches', function() {
       'use strict';
+      var colors = [
+        ['#1e5667','#3d7e92','#97cad9','#b6dfeb'],
+        ['#863a27','#c75336','#d8765d','#fbbfb0'],
+        ['#677b31','#8ba446','#b0c870','#def0ac'],
+        ['#f28e1b','#e19d4e','#ffc17a','#f8e7b9'],
+        ['#520039','#854271','#a186be','#d9cce7'],
+        ['#603816','#ad6628','#e0b48d','#edd1b8']
+      ];
       return {
         getSwatches: function (elem) {
           console.log("hi");
-
+          return colors;
         }
       };
     })
-    .directive('colorpicker', ['$document', '$compile', '$rootScope', 'Color', 'Slider', 'Helper', function ($document, $compile, $rootScope, Color, Slider, Helper) {
+    .directive('colorpicker', ['$document', '$compile', '$rootScope', 'Color', 'Slider', 'Helper', 'Swatches', function ($document, $compile, $rootScope, Color, Slider, Helper, Swatches) {
       'use strict';
       return {
         require: '?ngModel',
         restrict: 'A',
         link: function ($scope, elem, attrs, ngModel) {
           var
+              swatchColor = Swatches.colors,
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'bottom',
               inline = angular.isDefined(attrs.colorpickerInline) ? attrs.colorpickerInline : false,
@@ -316,6 +325,7 @@ angular.module('colorpicker.module', [])
 
           $compile(colorpickerTemplate)($scope);
 
+          console.log(swatchColor);
           if (withInput) {
             var pickerColorInput = colorpickerTemplate.find('input');
             pickerColorInput
