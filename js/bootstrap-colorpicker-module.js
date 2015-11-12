@@ -276,9 +276,6 @@ angular.module('colorpicker.module', [])
       return {
         require: '?ngModel',
         restrict: 'A',
-        scope: {
-          test: "
-        },
         link: function ($scope, elem, attrs, ngModel) {
           var
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
