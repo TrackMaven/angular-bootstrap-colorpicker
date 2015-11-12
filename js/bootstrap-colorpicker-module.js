@@ -276,6 +276,9 @@ angular.module('colorpicker.module', [])
       return {
         require: '?ngModel',
         restrict: 'A',
+        scope: {
+          test: "
+        },
         link: function ($scope, elem, attrs, ngModel) {
           var
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
@@ -298,7 +301,9 @@ angular.module('colorpicker.module', [])
                               inputTemplate +
                           '</div>' +
                           '<div id="colorpicker-swatch">' +
-                              'hi' +
+                            '<div ng-repeat="n in [1,2,3]">' + 
+                              'hi' + {{n }} + 
+                            '</div>' + 
                           '</div>' +
                           closeButton +
                           switchButton +
