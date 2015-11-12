@@ -308,7 +308,7 @@ angular.module('colorpicker.module', [])
                           '</div>' +
                           '<div id="colorpicker-swatch">' +
                             '<div ng-repeat="colors in swatchColors[0]">' + 
-                              '<span ng-bind="color"></span>'+ 
+                              '<span ng-bind="colors"></span>'+ 
                             '</div>' + 
                           '</div>' +
                           closeButton +
