@@ -285,8 +285,9 @@ angular.module('colorpicker.module', [])
         require: '?ngModel',
         restrict: 'A',
         link: function ($scope, elem, attrs, ngModel) {
+
+          var $scope.swatchColors = Swatches.getSwatches();
           var
-              swatchColors = Swatches.getSwatches(),
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'bottom',
               inline = angular.isDefined(attrs.colorpickerInline) ? attrs.colorpickerInline : false,
