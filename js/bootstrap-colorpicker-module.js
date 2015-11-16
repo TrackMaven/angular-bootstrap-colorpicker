@@ -324,8 +324,7 @@ angular.module('colorpicker.module', [])
               pickerColorPointers = colorpickerTemplate.find('i');
 
           $compile(colorpickerTemplate)($scope);
-
-          console.log(swatchColors);
+          console.log('Outputing swatch colors', swatchColors);
           if (withInput) {
             var pickerColorInput = colorpickerTemplate.find('input');
             pickerColorInput
@@ -481,8 +480,8 @@ angular.module('colorpicker.module', [])
             pickerColorPointers.eq(1).css('top', 100 * (1 - pickerColor.value.h) + 'px');
             pickerColorPointers.eq(2).css('top', 100 * (1 - pickerColor.value.a) + 'px');
             previewColor();
-            console.log('an update is happening')
-            $rootScope.$broadcast('colorChange', 'test');
+            // emit event for color change 
+            $rootScope.$broadcast('colorChange');
           };
 
           var getColorpickerTemplatePosition = function() {
@@ -587,7 +586,6 @@ angular.module('colorpicker.module', [])
           };
 
           var switchColorpickerView = function() {
-            console.log("switching view");
             var paletteElement = angular.element(document.getElementById("colorpicker-palette"));
             var swatchElement = angular.element(document.getElementById("colorpicker-swatch"));
 
