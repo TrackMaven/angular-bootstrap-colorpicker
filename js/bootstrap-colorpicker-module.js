@@ -310,7 +310,7 @@ angular.module('colorpicker.module', [])
                           '<div id="colorpicker-swatch">' +
                             '<div ng-repeat="rows in swatchColors">' +
                               '<div ng-repeat="color in rows">' +
-                                '<div class="visualizer-square" style="background:color"></div>'+
+                                '<div class="visualizer-square" style="background:[[color]]"></div>'+
                               '</div>' +
                             '</div>' + 
                           '</div>' +
