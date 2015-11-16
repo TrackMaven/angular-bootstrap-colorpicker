@@ -324,12 +324,11 @@ angular.module('colorpicker.module', [])
               pickerColorPointers = colorpickerTemplate.find('i');
 
           $compile(colorpickerTemplate)($scope);
-          console.log('Outputing swatch colors', swatchColors);
+          console.log(swatchColors);
           if (withInput) {
             var pickerColorInput = colorpickerTemplate.find('input');
             pickerColorInput
                 .on('mousedown', function(event) {
-                  console.log('this is happening ?');
                   event.stopPropagation();
                 })
                 .on('keyup', function(event) {
@@ -481,6 +480,7 @@ angular.module('colorpicker.module', [])
             pickerColorPointers.eq(2).css('top', 100 * (1 - pickerColor.value.a) + 'px');
             previewColor();
             // emit event for color change 
+            console.log("About to emit event");
             $rootScope.$broadcast('colorChange');
           };
 
