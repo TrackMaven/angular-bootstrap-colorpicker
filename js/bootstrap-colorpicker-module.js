@@ -289,7 +289,7 @@ angular.module('colorpicker.module', [])
           $scope.swatchColors = Swatches.getSwatches();
           $scope.selectColor = function (color) {
               console.log('printing color', color)
-              $scope.$apply(ngModel.$setViewValue(color))
+              ngModel.$setViewValue(color)
           };
           var
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
