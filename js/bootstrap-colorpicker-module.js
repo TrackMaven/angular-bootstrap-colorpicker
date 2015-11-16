@@ -330,7 +330,7 @@ angular.module('colorpicker.module', [])
             var pickerColorInput = colorpickerTemplate.find('input');
             pickerColorInput
                 .on('mousedown', function(event) {
-                  console.log('this is happening ?')
+                  console.log('this is happening ?');
                   event.stopPropagation();
                 })
                 .on('keyup', function(event) {
@@ -338,12 +338,12 @@ angular.module('colorpicker.module', [])
                   elem.val(newColor);
                   if(ngModel) {
                     $scope.$apply(ngModel.$setViewValue(newColor));
-                    $rootScope.$broadcast('colorChange');
                   }
                   event.stopPropagation();
                   event.preventDefault();
                 });
             elem.on('keyup', function() {
+              console.log('this is currently happening now');
               pickerColorInput.val(elem.val());
             });
           }
@@ -458,7 +458,6 @@ angular.module('colorpicker.module', [])
             elem.val(newColor);
             if(ngModel) {
               $scope.$apply(ngModel.$setViewValue(newColor));
-              $rootScope.$broadcast('colorChange', 'test');
 
             }
             if (withInput) {
@@ -482,6 +481,8 @@ angular.module('colorpicker.module', [])
             pickerColorPointers.eq(1).css('top', 100 * (1 - pickerColor.value.h) + 'px');
             pickerColorPointers.eq(2).css('top', 100 * (1 - pickerColor.value.a) + 'px');
             previewColor();
+            console.log('an update is happening')
+            $rootScope.$broadcast('colorChange', 'test');
           };
 
           var getColorpickerTemplatePosition = function() {
