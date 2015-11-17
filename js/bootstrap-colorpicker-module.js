@@ -308,7 +308,6 @@ angular.module('colorpicker.module', [])
               target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
               withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
-              closeButton = !inline ? '<button type="button" id="close-colorpicker" class="close close-colorpicker">&times;</button>' : '',
               switchButton = !inline ? '<button type="button" id="switch-colorpicker">test</button>' : '',
               stripesCheckBox = !inline ? '<input class="checkbox" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block" for="stripes-checkbox">STRIPES</label>' : '',
 
@@ -323,7 +322,7 @@ angular.module('colorpicker.module', [])
                               inputTemplate +
                           '</div>' +
                           '<div id="colorpicker-swatch">' +
-                            '<div class="left mr1" ng-class="{'m0': $last}" ng-repeat="rows in swatchColors">' +
+                            '<div class="left mr1" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
                               '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
                             '</div>' +
                           '</div>' +
