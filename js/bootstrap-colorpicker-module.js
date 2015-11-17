@@ -310,8 +310,7 @@ angular.module('colorpicker.module', [])
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
               closeButton = !inline ? '<button type="button" id="close-colorpicker" class="close close-colorpicker">&times;</button>' : '',
               switchButton = !inline ? '<button type="button" id="switch-colorpicker">test</button>' : '',
-              stripesCheckBox = !inline ? '<input class="inline-block" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox">' : '',
-              stripesLabel = !inline ? '<label class="inline-block" for="stripes-checkbox">STRIPES</label>' : '',
+              stripesCheckBox = !inline ? '<input class="checkbox" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block" for="stripes-checkbox">STRIPES</label>' : '',
 
               template =
                   '<div class="colorpicker dropdown">' +
@@ -328,10 +327,8 @@ angular.module('colorpicker.module', [])
                               '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
                             '</div>' +
                           '</div>' +
-                          closeButton +
                           switchButton +
                           stripesCheckBox +
-                          stripesLabel +
                       '</div>' +
                   '</div>',
               colorpickerTemplate = angular.element(template),
