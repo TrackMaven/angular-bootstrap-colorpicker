@@ -284,10 +284,6 @@ angular.module('colorpicker.module', [])
       return {
         require: '?ngModel',
         restrict: 'A',
-        scope: {
-            streamid: '='
-        },
-        transclude: true,
         link: function ($scope, elem, attrs, ngModel) {
 
           console.log('printing model', ngModel);
@@ -299,11 +295,12 @@ angular.module('colorpicker.module', [])
           };
         
           $scope.toggleStripes = function (event) {
-              console.log($scope.streamid);
-              $rootScope.$broadcast('toggleStripes', {streamid: $scope.streamid});
+              console.log(streamid);
+              $rootScope.$broadcast('toggleStripes', {streamid: streamid});
           };
 
           var
+              streamid = attrs.streamid,
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'bottom',
               inline = angular.isDefined(attrs.colorpickerInline) ? attrs.colorpickerInline : false,
