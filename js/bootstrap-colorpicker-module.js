@@ -284,6 +284,9 @@ angular.module('colorpicker.module', [])
       return {
         require: '?ngModel',
         restrict: 'A',
+        scope: {
+            streamid: '='
+        },
         link: function ($scope, elem, attrs, ngModel) {
 
           console.log('printing model', ngModel);
@@ -295,8 +298,8 @@ angular.module('colorpicker.module', [])
           };
         
           $scope.toggleStripes = function (event) {
-              console.log('logging out event')
-              $rootScope.$broadcast('toggleStripes', {name:'farhan', color:'yourmom'});
+              console.log($scope.streamid);
+              $rootScope.$broadcast('toggleStripes', {streamid: $scope.streamid});
           };
 
           var
