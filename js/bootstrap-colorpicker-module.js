@@ -324,7 +324,7 @@ angular.module('colorpicker.module', [])
                               inputTemplate +
                           '</div>' +
                           '<div id="colorpicker-swatch">' +
-                            '<div class="left mr1" ng-class="{'m0': $last}" ng-repeat="rows in swatchColors">' +
+                            '<div class="left mr1" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
                               '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
                             '</div>' +
                           '</div>' +
