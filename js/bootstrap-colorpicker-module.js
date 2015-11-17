@@ -16,8 +16,8 @@ angular.module('colorpicker.module', [])
               scrollX = 0,
               scrollY = 0;
           while (elem && !isNaN(elem.offsetLeft) && !isNaN(elem.offsetTop)) {
-            x += elem.offsetLeft - 1;
-            y += elem.offsetTop - 7;
+            x += elem.offsetLeft - 0.9;
+            y += elem.offsetTop - 8;
             if (!fixedPosition && elem.tagName === 'BODY') {
               scrollX += document.documentElement.scrollLeft || elem.scrollLeft;
               scrollY += document.documentElement.scrollTop || elem.scrollTop;
