@@ -284,6 +284,10 @@ angular.module('colorpicker.module', [])
       return {
         require: '?ngModel',
         restrict: 'A',
+        scope: {
+            streamid: '='
+        },
+        transclude: true,
         link: function ($scope, elem, attrs, ngModel) {
 
           console.log('printing model', ngModel);
