@@ -302,7 +302,7 @@ angular.module('colorpicker.module', [])
           var
               streamid = attrs.streamid,
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
-              position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'bottom',
+              position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'top',
               inline = angular.isDefined(attrs.colorpickerInline) ? attrs.colorpickerInline : false,
               fixedPosition = angular.isDefined(attrs.colorpickerFixedPosition) ? attrs.colorpickerFixedPosition : false,
               target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
@@ -312,7 +312,7 @@ angular.module('colorpicker.module', [])
               stripesCheckBox = !inline ? '<input class="checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
               template =
-                  '<div class="colorpicker colorpicker-position-top dropdown">' +
+                  '<div class="colorpicker dropdown">' +
                       '<div class="dropdown-menu clearfix">' +
                           '<div style="display:none" id="colorpicker-palette">' +
                               '<colorpicker-saturation><i></i></colorpicker-saturation>' +
