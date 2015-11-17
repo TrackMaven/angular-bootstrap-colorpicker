@@ -274,28 +274,28 @@ angular.module('colorpicker.module', [])
       ];
       return {
         getSwatches: function (elem) {
-          console.log("hi");
           return colors;
         }
       };
     })
-    .directive('colorpicker', ['$document', '$compile', '$rootScope', 'Color', 'Slider', 'Helper', 'Swatches', function ($document, $compile, $rootScope, Color, Slider, Helper, Swatches) {
+    .directive('colorpicker', ['$window', '$document', '$compile', '$rootScope', 'Color', 'Slider', 'Helper', 'Swatches', function ($window, $document, $compile, $rootScope, Color, Slider, Helper, Swatches) {
       'use strict';
       return {
         require: '?ngModel',
         restrict: 'A',
         link: function ($scope, elem, attrs, ngModel) {
 
-          console.log('printing model', ngModel);
+
+          angular.element($window).bind('resize', function () {
+              emitEvent('colorpicker-closed');
+          });
 
           $scope.swatchColors = Swatches.getSwatches();
           $scope.selectColor = function (color) {
-              console.log('printing color', color)
               ngModel.$setViewValue(color)
           };
 
           $scope.toggleStripes = function (event) {
-              console.log(streamid);
               $rootScope.$broadcast('toggleStripes', {streamid: streamid});
           };
 
@@ -339,7 +339,6 @@ angular.module('colorpicker.module', [])
               pickerColorPointers = colorpickerTemplate.find('i');
 
           $compile(colorpickerTemplate)($scope);
-          console.log("Displaying Colors", $scope.swatchColors);
           if (withInput) {
             var pickerColorInput = colorpickerTemplate.find('input');
             pickerColorInput
@@ -356,7 +355,6 @@ angular.module('colorpicker.module', [])
                   event.preventDefault();
                 });
             elem.on('keyup', function() {
-              console.log('this is currently happening now');
               pickerColorInput.val(elem.val());
             });
           }
@@ -495,7 +493,6 @@ angular.module('colorpicker.module', [])
             pickerColorPointers.eq(2).css('top', 100 * (1 - pickerColor.value.a) + 'px');
             previewColor();
             // emit event for color change
-            console.log("About to emit event");
             $rootScope.$broadcast('colorChange');
           };
 
