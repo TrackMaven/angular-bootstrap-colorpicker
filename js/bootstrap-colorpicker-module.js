@@ -288,7 +288,7 @@ angular.module('colorpicker.module', [])
 
           angular.element($window).bind('resize', function () {
               console.log('being called');
-              emitEvent('colorpicker-closed');
+              colorpickerTemplate.remove();
           });
 
           $scope.swatchColors = Swatches.getSwatches();
