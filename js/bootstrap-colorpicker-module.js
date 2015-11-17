@@ -293,7 +293,7 @@ angular.module('colorpicker.module', [])
               console.log('printing color', color)
               ngModel.$setViewValue(color)
           };
-        
+
           $scope.toggleStripes = function (event) {
               console.log(streamid);
               $rootScope.$broadcast('toggleStripes', {streamid: streamid});
@@ -310,9 +310,9 @@ angular.module('colorpicker.module', [])
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
               closeButton = !inline ? '<button type="button" id="close-colorpicker" class="close close-colorpicker">&times;</button>' : '',
               switchButton = !inline ? '<button type="button" id="switch-colorpicker">test</button>' : '',
-              stripesCheckBox = !inline ? '<input type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox">' : '',
-              stripesLabel = !inline ? '<label for="stripes-checkbox">STRIPES</label>' : '',
- 
+              stripesCheckBox = !inline ? '<input class="inline-block" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox">' : '',
+              stripesLabel = !inline ? '<label class="inline-block" for="stripes-checkbox">STRIPES</label>' : '',
+
               template =
                   '<div class="colorpicker dropdown">' +
                       '<div class="dropdown-menu">' +
@@ -324,9 +324,9 @@ angular.module('colorpicker.module', [])
                               inputTemplate +
                           '</div>' +
                           '<div id="colorpicker-swatch">' +
-                            '<div class="left mr1 mb1" ng-repeat="rows in swatchColors">' +
-                              '<div ng-repeat="color in rows" class="visualizer-square" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
-                            '</div>' + 
+                            '<div class="left mr1" ng-class="{'m0': $last}" ng-repeat="rows in swatchColors">' +
+                              '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
+                            '</div>' +
                           '</div>' +
                           closeButton +
                           switchButton +
@@ -498,7 +498,7 @@ angular.module('colorpicker.module', [])
             pickerColorPointers.eq(1).css('top', 100 * (1 - pickerColor.value.h) + 'px');
             pickerColorPointers.eq(2).css('top', 100 * (1 - pickerColor.value.a) + 'px');
             previewColor();
-            // emit event for color change 
+            // emit event for color change
             console.log("About to emit event");
             $rootScope.$broadcast('colorChange');
           };
@@ -629,7 +629,7 @@ angular.module('colorpicker.module', [])
           angular.element(switchButtonElement).on('click', function() {
             switchColorpickerView();
           });
-          
+
           if (attrs.colorpickerIsOpen) {
             $scope.$watch(attrs.colorpickerIsOpen, function(shouldBeOpen) {
 
