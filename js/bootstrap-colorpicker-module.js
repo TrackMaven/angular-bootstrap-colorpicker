@@ -309,7 +309,7 @@ angular.module('colorpicker.module', [])
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
               closeButton = !inline ? '<button type="button" id="close-colorpicker" class="close close-colorpicker">&times;</button>' : '',
               switchButton = !inline ? '<button type="button" id="switch-colorpicker">test</button>' : '',
-              stripesCheckBox = !inline ? '<input type="checkbox" ng-change="toggleStripes()" id="stripes-checkbox">' : '',
+              stripesCheckBox = !inline ? '<input type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox">' : '',
               stripesLabel = !inline ? '<label for="stripes-checkbox">STRIPES</label>' : '',
  
               template =
