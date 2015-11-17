@@ -286,7 +286,7 @@ angular.module('colorpicker.module', [])
         restrict: 'A',
         link: function ($scope, elem, attrs, ngModel) {
 
-          console.log('printing model', ngModel.$viewValue);
+          console.log('printing model', ngModel);
 
           $scope.swatchColors = Swatches.getSwatches();
           $scope.selectColor = function (color) {
