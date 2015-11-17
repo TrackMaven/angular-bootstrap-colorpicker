@@ -300,6 +300,8 @@ angular.module('colorpicker.module', [])
               $rootScope.$broadcast('toggleStripes', {streamid: streamid});
           };
 
+          $scope.palette = true;
+
           var
               streamid = attrs.streamid,
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
@@ -315,14 +317,14 @@ angular.module('colorpicker.module', [])
               template =
                   '<div class="colorpicker dropdown">' +
                       '<div class="dropdown-menu clearfix">' +
-                          '<div style="display:none" id="colorpicker-palette">' +
+                          '<div ng-if="palette" id="colorpicker-palette">' +
                               '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                               '<colorpicker-hue><i></i></colorpicker-hue>' +
                               '<colorpicker-alpha><i></i></colorpicker-alpha>' +
                               '<colorpicker-preview></colorpicker-preview>' +
                               inputTemplate +
                           '</div>' +
-                          '<div id="colorpicker-swatch">' +
+                          '<div id="colorpicker-swatch" ng-if="!palette">' +
                             '<div class="left mr1" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
                               '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
                             '</div>' +
@@ -621,7 +623,8 @@ angular.module('colorpicker.module', [])
           var switchButtonElement = document.getElementById("switch-colorpicker");
 
           angular.element(switchButtonElement).on('click', function() {
-            switchColorpickerView();
+            //switchColorpickerView();
+            $scope.palette = !$scope.palette
           });
 
           if (attrs.colorpickerIsOpen) {
