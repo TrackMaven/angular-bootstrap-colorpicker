@@ -296,7 +296,7 @@ angular.module('colorpicker.module', [])
         
           $scope.toggleStripes = function (event) {
               console.log('logging out event')
-              $rootScope.$broadcast('colorChange', 'stripes');
+              $rootScope.$broadcast('toggleStripes');
           };
 
           var
