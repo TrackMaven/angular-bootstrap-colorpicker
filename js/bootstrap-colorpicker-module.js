@@ -287,6 +287,7 @@ angular.module('colorpicker.module', [])
 
 
           angular.element($window).bind('resize', function () {
+              console.log('being called');
               emitEvent('colorpicker-closed');
           });
 
@@ -309,7 +310,7 @@ angular.module('colorpicker.module', [])
               withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
               switchButton = !inline ? '<button type="button" id="switch-colorpicker">test</button>' : '',
-              stripesCheckBox = !inline ? '<input class="experimental-checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox" /> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
+              stripesCheckBox = !inline ? '<input class="checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
               template =
                   '<div class="colorpicker dropdown">' +
