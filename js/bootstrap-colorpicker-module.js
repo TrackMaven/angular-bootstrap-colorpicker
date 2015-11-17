@@ -308,7 +308,7 @@ angular.module('colorpicker.module', [])
               withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
               closeButton = !inline ? '<button type="button" id="close-colorpicker" class="close close-colorpicker">&times;</button>' : '',
-              switchButton = !inline ? '<button type="button" id="switch-colorpicker">test</button' : '',
+              switchButton = !inline ? '<button type="button" id="switch-colorpicker">test</button>' : '',
               stripesCheckBox = !inline ? '<input type="checkbox" ng-change="toggleStripes()" id="stripes-checkbox">STRIPES</input>' : '',
  
               template =
