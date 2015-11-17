@@ -312,8 +312,8 @@ angular.module('colorpicker.module', [])
               stripesCheckBox = !inline ? '<input class="checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
               template =
-                  '<div class="colorpicker dropdown">' +
-                      '<div class="dropdown-menu clearfix">' +
+                  '<div popover popover-placement="top">' +
+                      '<div class="clearfix">' +
                           '<div style="display:none" id="colorpicker-palette">' +
                               '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                               '<colorpicker-hue><i></i></colorpicker-hue>' +
