@@ -293,6 +293,12 @@ angular.module('colorpicker.module', [])
               console.log('printing color', color)
               ngModel.$setViewValue(color)
           };
+        
+          $scope.toggleStripes = function (event) {
+              console.log('logging out event')
+              $rootScope.$broadcast('colorChange', 'stripes');
+          };
+
           var
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'bottom',
@@ -303,6 +309,8 @@ angular.module('colorpicker.module', [])
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
               closeButton = !inline ? '<button type="button" id="close-colorpicker" class="close close-colorpicker">&times;</button>' : '',
               switchButton = !inline ? '<button type="button" id="switch-colorpicker">test</button' : '',
+              stripesCheckBox = !inline ? '<input type="checkbox" ng-change="toggleStripes()" id="stripes-checkbox">STRIPES</input>' : '',
+ 
               template =
                   '<div class="colorpicker dropdown">' +
                       '<div class="dropdown-menu">' +
@@ -322,6 +330,7 @@ angular.module('colorpicker.module', [])
                           '</div>' +
                           closeButton +
                           switchButton +
+                          stripesCheckBox +
                       '</div>' +
                   '</div>',
               colorpickerTemplate = angular.element(template),
