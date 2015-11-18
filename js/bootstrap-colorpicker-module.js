@@ -305,7 +305,7 @@ angular.module('colorpicker.module', [])
           var
               streamid = attrs.streamid,
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
-              position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'right',
+              position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'top',
               inline = angular.isDefined(attrs.colorpickerInline) ? attrs.colorpickerInline : false,
               fixedPosition = angular.isDefined(attrs.colorpickerFixedPosition) ? attrs.colorpickerFixedPosition : false,
               target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
@@ -316,7 +316,7 @@ angular.module('colorpicker.module', [])
 
               template =
                   '<div class="colorpicker dropdown">' +
-                      '<div class="dropdown-menu clearfix">' +
+                      '<div class="dropdown-menu clearfix" style="height: 200px">' +
                           '<div ng-if="palette" id="colorpicker-palette">' +
                               '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                               '<colorpicker-hue><i></i></colorpicker-hue>' +
