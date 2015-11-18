@@ -316,24 +316,28 @@ angular.module('colorpicker.module', [])
 
               template =
                   '<div class="colorpicker dropdown">' +
-                      '<div class="dropdown-menu clearfix" style="height: 200px">' +
-                          '<div ng-if="palette" id="colorpicker-palette">' +
-                              '<colorpicker-saturation><i></i></colorpicker-saturation>' +
-                              '<colorpicker-hue><i></i></colorpicker-hue>' +
-                              '<colorpicker-alpha><i></i></colorpicker-alpha>' +
-                              '<colorpicker-preview></colorpicker-preview>' +
-                              inputTemplate +
-                          '</div>' +
-                          '<div id="colorpicker-swatch" ng-if="!palette">' +
-                            '<div class="visualizer-swatch-row mr1 left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
-                              '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
-                            '</div>' +
-                          '</div>' +
-                          '<div class="swatch-controls clearfix">'+
-                            switchButton +
-                            stripesCheckBox +
-                          '</div>' +
+                    '<div class="dropdown-menu" style="height: 200px">' +
+                      '<div ng-if="palette" id="colorpicker-palette">' +
+                          '<colorpicker-saturation><i></i></colorpicker-saturation>' +
+                          '<colorpicker-hue><i></i></colorpicker-hue>' +
+                          '<colorpicker-alpha><i></i></colorpicker-alpha>' +
+                          '<colorpicker-preview></colorpicker-preview>' +
+                          inputTemplate +
                       '</div>' +
+                      '<div id="colorpicker-swatch" ng-if="!palette">' +
+                        '<div class="visualizer-swatch-row mr1 left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
+                          '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
+                        '</div>' +
+                      '</div>' +
+                      '<div class="swatch-controls clearfix">'+
+                        '<div class="left">' +
+                          switchButton +
+                        '</div>' +
+                        '<div class="right">' +
+                          stripesCheckBox +
+                        '</div>' +
+                      '</div>' +
+                    '</div>' +
                   '</div>',
               colorpickerTemplate = angular.element(template),
               pickerColor = Color,
