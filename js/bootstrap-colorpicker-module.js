@@ -300,8 +300,6 @@ angular.module('colorpicker.module', [])
               $rootScope.$broadcast('toggleStripes', {streamid: streamid});
           };
 
-          $scope.palette = true;
-
           var
               streamid = attrs.streamid,
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
@@ -311,20 +309,20 @@ angular.module('colorpicker.module', [])
               target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
               withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
-              switchButton = !inline ? '<div ng-click="palette = !palette" "id="switch-colorpicker">test</div>' : '',
+              switchButton = !inline ? '<div "id="switch-colorpicker">test</div>' : '',
               stripesCheckBox = !inline ? '<input class="experimental-checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
               template =
                   '<div class="colorpicker dropdown">' +
                     '<div class="dropdown-menu" style="height: 200px">' +
-                      '<div ng-if="palette" id="colorpicker-palette">' +
+                      '<div id="colorpicker-palette">' +
                           '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                           '<colorpicker-hue><i></i></colorpicker-hue>' +
                           '<colorpicker-alpha><i></i></colorpicker-alpha>' +
                           '<colorpicker-preview></colorpicker-preview>' +
                           inputTemplate +
                       '</div>' +
-                      '<div id="colorpicker-swatch" ng-if="!palette">' +
+                      '<div id="colorpicker-swatch">' +
                         '<div class="visualizer-swatch-row mr1 left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
                           '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
                         '</div>' +
@@ -629,8 +627,8 @@ angular.module('colorpicker.module', [])
           var switchButtonElement = document.getElementById("switch-colorpicker");
 
           angular.element(switchButtonElement).on('click', function() {
-            //switchColorpickerView();
-            //$scope.palette = !$scope.palette
+            switchColorpickerView();
+            $scope.palette = !$scope.palette
           });
 
           if (attrs.colorpickerIsOpen) {
