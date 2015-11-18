@@ -324,13 +324,15 @@ angular.module('colorpicker.module', [])
                               '<colorpicker-preview></colorpicker-preview>' +
                               inputTemplate +
                           '</div>' +
-                          '<div id="colorpicker-swatch">' +
-                            '<div class="visualizer-swatch-row left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
-                              '<div ng-repeat="color in rows" class="visualizer-square" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
+                          '<div id="colorpicker-swatch" ng-if="!palette">' +
+                            '<div class="visualizer-swatch-row mr1 left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
+                              '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
                             '</div>' +
                           '</div>' +
-                          switchButton +
-                          stripesCheckBox +
+                          '<div class="swatch-controls clearfix">'+
+                            switchButton +
+                            stripesCheckBox +
+                          '</div>' +
                       '</div>' +
                   '</div>',
               colorpickerTemplate = angular.element(template),
