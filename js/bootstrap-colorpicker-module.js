@@ -301,8 +301,17 @@ angular.module('colorpicker.module', [])
 
           $scope.palette = true;
 
+          $scope.toggleSwatchStrip = function (color) {
+              if (dashed)  {
+                  return 'repeating-linear-gradient(90deg, white, white 1px,'+  color + ' 2px,' +  color + ' 5px)'
+            } else {
+                return ''
+            }
+          }
+
           var
               streamid = attrs.streamid,
+              dashed = attrs.dashed,
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'right',
               inline = angular.isDefined(attrs.colorpickerInline) ? attrs.colorpickerInline : false,
@@ -325,7 +334,7 @@ angular.module('colorpicker.module', [])
                     '</div>' +
                     '<div id="colorpicker-swatch">' +
                       '<div class="visualizer-swatch-row left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
-                        '<div ng-repeat="color in rows" class="visualizer-square" style="background:[[color]]; border-color: [[color]]" ng-click="selectColor(color)"></div>'+
+                        '<div ng-repeat="color in rows" class="visualizer-square" ng-style="{background: toggleSwatchStrip([[color]]}" style="background:[[color]]; border-color: [[color]]" ng-click="selectColor(color)"></div>'+
                       '</div>' +
                     '</div>' +
                     '<div class="swatch-controls clearfix">'+
