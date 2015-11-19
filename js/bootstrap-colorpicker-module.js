@@ -314,7 +314,7 @@ angular.module('colorpicker.module', [])
               template =
                 '<div class="colorpicker">' +
                   '<div class="colorpicker-inner">' +
-                    '<div id="colorpicker-palette" style="display:none;">' +
+                    '<div id="colorpicker-palette">' +
                         '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                         '<colorpicker-hue><i></i></colorpicker-hue>' +
                         '<colorpicker-alpha><i></i></colorpicker-alpha>' +
@@ -345,6 +345,7 @@ angular.module('colorpicker.module', [])
               pickerColorPointers = colorpickerTemplate.find('i');
 
           $compile(colorpickerTemplate)($scope);
+
           if (withInput) {
             var pickerColorInput = colorpickerTemplate.find('input');
             pickerColorInput
