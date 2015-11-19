@@ -285,7 +285,6 @@ angular.module('colorpicker.module', [])
         restrict: 'A',
         link: function ($scope, elem, attrs, ngModel) {
 
-          $scope.palette = true
           angular.element($window).bind('resize', function () {
               console.log('being called');
               hideColorpickerTemplate();
@@ -315,14 +314,14 @@ angular.module('colorpicker.module', [])
               template =
                 '<div class="colorpicker">' +
                   '<div class="colorpicker-inner">' +
-                    '<div ng-if="palette" id="colorpicker-palette">' +
+                    '<div id="colorpicker-palette">' +
                         '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                         '<colorpicker-hue><i></i></colorpicker-hue>' +
                         '<colorpicker-alpha><i></i></colorpicker-alpha>' +
                         '<colorpicker-preview></colorpicker-preview>' +
                         inputTemplate +
                     '</div>' +
-                    '<div id="colorpicker-swatch" ng-if="!palette">' +
+                    '<div id="colorpicker-swatch">' +
                       '<div class="visualizer-swatch-row mr1 left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
                         '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
                       '</div>' +
@@ -627,8 +626,7 @@ angular.module('colorpicker.module', [])
           var switchButtonElement = document.getElementById("switch-colorpicker");
 
           angular.element(switchButtonElement).on('click', function() {
-            //switchColorpickerView();
-            $scope.palette = !$scope.palette
+            switchColorpickerView();
           });
 
           if (attrs.colorpickerIsOpen) {
