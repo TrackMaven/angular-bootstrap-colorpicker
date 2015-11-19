@@ -312,7 +312,7 @@ angular.module('colorpicker.module', [])
 
           var
               streamid = attrs.streamid,
-              dashed = attrs.dashed == 'true'? true : false
+              dashed = attrs.dashed == 'true'? true : false,
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
               position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'right',
               inline = angular.isDefined(attrs.colorpickerInline) ? attrs.colorpickerInline : false,
