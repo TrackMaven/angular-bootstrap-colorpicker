@@ -324,14 +324,14 @@ angular.module('colorpicker.module', [])
               template =
                 '<div class="colorpicker">' +
                   '<div class="colorpicker-inner">' +
-                    '<div id="colorpicker-palette" data-shown="yes" style="display:none;">' +
+                    '<div id="colorpicker-palette" data-shown="no" style="display:none;">' +
                         '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                         '<colorpicker-hue><i></i></colorpicker-hue>' +
                         '<colorpicker-alpha><i></i></colorpicker-alpha>' +
                         '<colorpicker-preview></colorpicker-preview>' +
                         inputTemplate +
                     '</div>' +
-                    '<div id="colorpicker-swatch" data-shown="no">' +
+                    '<div id="colorpicker-swatch" data-shown="yes">' +
                       '<div class="visualizer-swatch-row left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
                         '<div ng-repeat="color in rows" class="visualizer-square" ng-style="{background: toggleSwatchStrip(color)}" style="background:[[color]]; border-color: [[color]]" ng-click="selectColor(color)"></div>'+
                       '</div>' +
