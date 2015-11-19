@@ -306,7 +306,7 @@ angular.module('colorpicker.module', [])
               if (dashed)  {
                   return 'repeating-linear-gradient(90deg, white, white 1px,'+  color + ' 2px,' +  color + ' 5px)'
             } else {
-                return ''
+                return color
             }
           }
 
