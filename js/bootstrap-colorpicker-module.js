@@ -629,6 +629,7 @@ angular.module('colorpicker.module', [])
           var switchButtonElement = document.getElementById("switch-colorpicker");
 
           angular.element(switchButtonElement).on('click', function() {
+            console.log('switchButtonElement is being clicked upon')
             switchColorpickerView();
           });
 
