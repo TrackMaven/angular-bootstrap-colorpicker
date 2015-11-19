@@ -286,7 +286,6 @@ angular.module('colorpicker.module', [])
         link: function ($scope, elem, attrs, ngModel) {
 
           angular.element($window).bind('resize', function () {
-              console.log('being called');
               hideColorpickerTemplate();
           });
 
@@ -303,7 +302,6 @@ angular.module('colorpicker.module', [])
           $scope.swatches = true;
 
           $scope.toggleSwatchStrip = function (color) {
-              console.log('made it here', attrs.dashed);
               if (attrs.dashed == 'true')  {
                   return 'repeating-linear-gradient(90deg, white, white 1px,'+  color + ' 2px,' +  color + ' 5px)'
             } else {
@@ -642,7 +640,6 @@ angular.module('colorpicker.module', [])
             console.log('switchButtonElement is being clicked upon')
             $scope.palette = !$scope.palette;
             $scope.swatches = !$scope.swatches;
-            console.log('this is the palette', $scope.palette)
             switchColorpickerView();
           });
 
