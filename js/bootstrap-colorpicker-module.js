@@ -335,7 +335,7 @@ angular.module('colorpicker.module', [])
                     '</div>' +
                     '<div id="colorpicker-swatch">' +
                       '<div class="visualizer-swatch-row left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
-                        '<div ng-repeat="color in rows" class="visualizer-square" ng-style="{background: toggleSwatchStrip([[color]])}" style="background:[[color]]; border-color: [[color]]" ng-click="selectColor(color)"></div>'+
+                        '<div ng-repeat="color in rows" class="visualizer-square" ng-style="{background: toggleSwatchStrip(color)}" style="background:[[color]]; border-color: [[color]]" ng-click="selectColor(color)"></div>'+
                       '</div>' +
                     '</div>' +
                     '<div class="swatch-controls clearfix">'+
