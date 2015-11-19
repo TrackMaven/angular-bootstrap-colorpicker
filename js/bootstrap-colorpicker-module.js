@@ -299,7 +299,8 @@ angular.module('colorpicker.module', [])
               $rootScope.$broadcast('toggleStripes', {streamid: streamid});
           };
 
-          $scope.palette = true;
+          $scope.palette = false;
+          $scope.swatches = true;
 
           $scope.toggleSwatchStrip = function (color) {
               console.log('made it here', attrs.dashed);
@@ -319,7 +320,7 @@ angular.module('colorpicker.module', [])
               target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
               withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
-              switchButton = !inline ? '<div id="switch-colorpicker"><i class="icon" ng-class="{\'icon-paintbrush\': palette, \'icon-swatches\': !palette}"></i></div>' : '',
+              switchButton = !inline ? '<div id="switch-colorpicker"><i class="icon" ng-class="{\'icon-paintbrush\': palette, \'icon-swatches\': swatches}"></i></div>' : '',
               stripesCheckBox = !inline ? '<input class="experimental-checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
               template =
@@ -640,6 +641,7 @@ angular.module('colorpicker.module', [])
           angular.element(switchButtonElement).on('click', function() {
             console.log('switchButtonElement is being clicked upon')
             $scope.palette = !$scope.palette;
+            $scope.swatches = !scope.swatches
             console.log('this is the palette', $scope.palette)
             switchColorpickerView();
           });
