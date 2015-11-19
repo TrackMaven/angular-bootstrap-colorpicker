@@ -303,7 +303,7 @@ angular.module('colorpicker.module', [])
 
           $scope.toggleSwatchStrip = function (color) {
               if (attrs.dashed == 'true')  {
-                  return 'repeating-linear-gradient(90deg, white, white 1px,'+  color + ' 2px,' +  color + ' 5px)'
+                  return 'repeating-linear-gradient(45deg, white, white 1px,'+  color + ' 2px,' +  color + ' 5px)'
             } else {
                 return color
             }
