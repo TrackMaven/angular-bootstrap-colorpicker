@@ -285,7 +285,7 @@ angular.module('colorpicker.module', [])
         restrict: 'A',
         link: function ($scope, elem, attrs, ngModel) {
 
-
+          $scope.palette = true
           angular.element($window).bind('resize', function () {
               console.log('being called');
               hideColorpickerTemplate();
@@ -309,7 +309,7 @@ angular.module('colorpicker.module', [])
               target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
               withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
-              switchButton = !inline ? '<div "id="switch-colorpicker">test</div>' : '',
+              switchButton = !inline ? '<div id="switch-colorpicker">test</div>' : '',
               stripesCheckBox = !inline ? '<input class="experimental-checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
               template =
@@ -627,7 +627,7 @@ angular.module('colorpicker.module', [])
           var switchButtonElement = document.getElementById("switch-colorpicker");
 
           angular.element(switchButtonElement).on('click', function() {
-            switchColorpickerView();
+            //switchColorpickerView();
             $scope.palette = !$scope.palette
           });
 
