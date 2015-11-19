@@ -355,8 +355,6 @@ angular.module('colorpicker.module', [])
               colorpickerPreview = colorpickerTemplate.find('colorpicker-preview'),
               pickerColorPointers = colorpickerTemplate.find('i');
 
-          console.log('this is the value of the dash', dashed);
-
           $compile(colorpickerTemplate)($scope);
 
           if (withInput) {
