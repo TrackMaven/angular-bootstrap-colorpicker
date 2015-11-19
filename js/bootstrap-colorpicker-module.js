@@ -299,6 +299,8 @@ angular.module('colorpicker.module', [])
               $rootScope.$broadcast('toggleStripes', {streamid: streamid});
           };
 
+          $scope.palette = true;
+
           var
               streamid = attrs.streamid,
               thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
@@ -308,7 +310,7 @@ angular.module('colorpicker.module', [])
               target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
               withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
               inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
-              switchButton = !inline ? '<div id="switch-colorpicker">test</div>' : '',
+              switchButton = !inline ? '<div id="switch-colorpicker"><i class="icon" ng-class="{\'icon-paintbrush\': palette, \'icon-swatches\': !palette}"></i></div>' : '',
               stripesCheckBox = !inline ? '<input class="experimental-checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
               template =
@@ -322,8 +324,8 @@ angular.module('colorpicker.module', [])
                         inputTemplate +
                     '</div>' +
                     '<div id="colorpicker-swatch">' +
-                      '<div class="visualizer-swatch-row mr1 left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
-                        '<div ng-repeat="color in rows" class="visualizer-square mb1" style="background:[[color]]" ng-click="selectColor(color)"></div>'+
+                      '<div class="visualizer-swatch-row left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
+                        '<div ng-repeat="color in rows" class="visualizer-square" style="background:[[color]]; border-color: [[color]]" ng-click="selectColor(color)"></div>'+
                       '</div>' +
                     '</div>' +
                     '<div class="swatch-controls clearfix">'+
