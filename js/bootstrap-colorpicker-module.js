@@ -324,14 +324,14 @@ angular.module('colorpicker.module', [])
               template =
                 '<div class="colorpicker">' +
                   '<div class="colorpicker-inner">' +
-                    '<div id="colorpicker-palette" data-shown="no" style="display:none;">' +
+                    '<div id="colorpicker-palette" style="display:none;">' +
                         '<colorpicker-saturation><i></i></colorpicker-saturation>' +
                         '<colorpicker-hue><i></i></colorpicker-hue>' +
                         '<colorpicker-alpha><i></i></colorpicker-alpha>' +
                         '<colorpicker-preview></colorpicker-preview>' +
                         inputTemplate +
                     '</div>' +
-                    '<div id="colorpicker-swatch" data-shown="yes">' +
+                    '<div id="colorpicker-swatch">' +
                       '<div class="visualizer-swatch-row left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
                         '<div ng-repeat="color in rows" class="visualizer-square" ng-style="{background: toggleSwatchStrip(color)}" style="background:[[color]]; border-color: [[color]]" ng-click="selectColor(color)"></div>'+
                       '</div>' +
@@ -618,13 +618,13 @@ angular.module('colorpicker.module', [])
             var paletteElement = angular.element(document.getElementById("colorpicker-palette"));
             var swatchElement = angular.element(document.getElementById("colorpicker-swatch"));
 
-            if (paletteElement.attr('data-shown') === 'no') {
-              paletteElement.css('display','block').attr({'data-shown': 'yes'});
-              swatchElement.css('display','none').attr({'data-shown': 'no'});
+            if (paletteElement.css('display') == 'none') {
+              paletteElement.css('display','block');
+              swatchElement.css('display','none');
             }
             else {
-              paletteElement.css('display','none').attr({'data-shown': 'no'});
-              swatchElement.css('display','block').attr({'data-shown': 'yes'});
+              paletteElement.css('display','none');
+              swatchElement.css('display','block');
             }
           };
 
