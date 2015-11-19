@@ -639,7 +639,7 @@ angular.module('colorpicker.module', [])
 
           angular.element(switchButtonElement).on('click', function() {
             console.log('switchButtonElement is being clicked upon')
-            $scope.palette = !scope.palette;
+            $scope.palette = !$scope.palette;
             switchColorpickerView();
           });
 
