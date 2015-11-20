@@ -285,6 +285,9 @@ angular.module('colorpicker.module', [])
     restrict: 'A',
     link: function ($scope, elem, attrs, ngModel) {
 
+
+      console.log('WHAT');
+
       angular.element($window).bind('resize', function () {
         hideColorpickerTemplate();
       });
