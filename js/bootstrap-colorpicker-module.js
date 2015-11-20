@@ -616,8 +616,8 @@ angular.module('colorpicker.module', [])
           };
 
           var switchColorpickerView = function() {
-            var paletteElement = angular.element(document.getElementById("colorpicker-palette"));
-            var swatchElement = angular.element(document.getElementById("colorpicker-swatch"));
+            var paletteElement = document.getElementById("colorpicker-palette");
+            var swatchElement = document.getElementById("colorpicker-swatch");
 
             if (paletteElement.css('display') == 'none') {
               paletteElement.css('display','block');
