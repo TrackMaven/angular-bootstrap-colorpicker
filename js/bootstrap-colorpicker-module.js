@@ -365,6 +365,9 @@ angular.module('colorpicker.module', [])
       colorpickerPreview = colorpickerTemplate.find('colorpicker-preview'),
       pickerColorPointers = colorpickerTemplate.find('i');
 
+
+
+      console.log('WHAT 1.5');
       $compile(colorpickerTemplate)($scope);
 
       console.log('WHAT 2');
