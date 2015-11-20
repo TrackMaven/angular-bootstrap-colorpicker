@@ -622,14 +622,14 @@ angular.module('colorpicker.module', [])
             if (paletteElement.css('display') == 'none') {
               paletteElement.css('display','block');
               swatchElement.css('display','none');
-              $parent.$scope.palette = true;
-              $parent.$scope.swatches = false;
+              $scope.palette = true;
+              $scope.swatches = false;
             }
             else {
               paletteElement.css('display','none');
               swatchElement.css('display','block');
-              $parent.$scope.swatches = true;
-              $parent.$scope.palette = false;
+              $scope.swatches = true;
+              $scope.palette = false;
             }
           };
 
