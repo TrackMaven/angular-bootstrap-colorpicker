@@ -620,12 +620,6 @@ angular.module('colorpicker.module', [])
               $scope.palette = !scope.palette;
           };
 
-          var switchButtonElement = $(".switch-colorpicker");
-
-          switchButtonElement.on('mousedown', function() {
-            switchColorpickerView();
-          });
-
           if (attrs.colorpickerIsOpen) {
             $scope.$watch(attrs.colorpickerIsOpen, function(shouldBeOpen) {
 
