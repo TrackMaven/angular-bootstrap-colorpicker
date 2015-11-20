@@ -616,8 +616,8 @@ angular.module('colorpicker.module', [])
           };
 
           var switchColorpickerView = function() {
-            var paletteElement = $('#colorpicker-palette');
-            var swatchElement = $('#colorpicker-swatch');
+            var paletteElement = angular.element(document.getElementById("colorpicker-palette"));
+            var swatchElement = angular.element(document.getElementById("colorpicker-swatch"));
 
             if (paletteElement.css('display') == 'none') {
               paletteElement.css('display','block');
@@ -629,16 +629,9 @@ angular.module('colorpicker.module', [])
             }
           };
 
-          var closeButtonElement = document.getElementById("close-colorpicker");
+          var switchButtonElement = document.getElementById("switch-colorpicker");
 
-          angular.element(closeButtonElement).on('click', function() {
-            hideColorpickerTemplate();
-          });
-
-          var switchButtonElement = $("#switch-colorpicker");
-
-          switchButtonElement.on('click', function() {
-            console.log('switchButtonElement is being clicked upon')
+          angular.element(switchButtonElement).on('click', function() {
             $scope.palette = !$scope.palette;
             $scope.swatches = !$scope.swatches;
             switchColorpickerView();
