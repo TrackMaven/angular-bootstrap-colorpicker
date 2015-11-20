@@ -325,14 +325,14 @@ angular.module('colorpicker.module', [])
       template =
       '<div class="colorpicker">' +
         '<div class="colorpicker-inner">' +
-          '<div id="colorpicker-palette" ng-if="palette">' +
+          '<div id="colorpicker-palette" ng-show="palette">' +
             '<colorpicker-saturation><i></i></colorpicker-saturation>' +
             '<colorpicker-hue><i></i></colorpicker-hue>' +
             '<colorpicker-alpha><i></i></colorpicker-alpha>' +
             '<colorpicker-preview></colorpicker-preview>' +
               inputTemplate +
           '</div>' +
-          '<div id="colorpicker-swatch" ng-if="!palette">' +
+          '<div id="colorpicker-swatch" ng-show="!palette">' +
             '<div class="visualizer-swatch-row left" ng-class="{\'m0\': $last}" ng-repeat="rows in swatchColors">' +
               '<div ng-repeat="color in rows" class="visualizer-square" ng-style="{background: toggleSwatchStrip(color)}" style="background:[[color]]; border-color: [[color]]" ng-click="selectColor(color)"></div>'+
             '</div>' +
@@ -618,8 +618,6 @@ angular.module('colorpicker.module', [])
           $scope.switchColorpickerView = function(event) {
               console.log('this is happening for real', event);
               $scope.palette = !$scope.palette;
-              // running compile
-              $compile(colorpickerTemplate)($scope);
           };
 
           if (attrs.colorpickerIsOpen) {
