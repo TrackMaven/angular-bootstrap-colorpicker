@@ -319,7 +319,7 @@ angular.module('colorpicker.module', [])
       target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
       withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
       inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
-      switchButton = !inline ? '<div ng-if="swatches" class="switch-colorpicker" stop-propagation><i class="icon icon-paintbrush"></i></div><div class="switch-colorpicker" ng-if="palette" stop-propagation><i class="icon icon-swatches"></i></div>' : '',
+      switchButton = !inline ? '<div ng-if="!palette" class="switch-colorpicker" ng-click="switchColorpickerView();" stop-propagation><i class="icon icon-paintbrush"></i></div><div class="switch-colorpicker" ng-if="palette" ng-click="switchColorpickerView();" stop-propagation><i class="icon icon-swatches"></i></div>' : '',
       stripesCheckBox = !inline ? '<input class="experimental-checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
       template =
@@ -355,7 +355,7 @@ angular.module('colorpicker.module', [])
       colorpickerPreview = colorpickerTemplate.find('colorpicker-preview'),
       pickerColorPointers = colorpickerTemplate.find('i');
 
-      //$compile(colorpickerTemplate)($scope);
+      $compile(colorpickerTemplate)($scope);
 
       if (withInput) {
         var pickerColorInput = colorpickerTemplate.find('input');
@@ -616,21 +616,7 @@ angular.module('colorpicker.module', [])
           };
 
           var switchColorpickerView = function() {
-            var paletteElement = angular.element(document.getElementById("colorpicker-palette"));
-            var swatchElement = angular.element(document.getElementById("colorpicker-swatch"));
-
-            if (paletteElement.css('display') == 'none') {
-              paletteElement.css('display','block');
-              swatchElement.css('display','none');
-              $scope.palette = true;
-              $scope.swatches = false;
-            }
-            else {
-              paletteElement.css('display','none');
-              swatchElement.css('display','block');
-              $scope.swatches = true;
-              $scope.palette = false;
-            }
+              $scope.palette = !scope.palette
           };
 
           var switchButtonElement = $(".switch-colorpicker");
