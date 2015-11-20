@@ -278,7 +278,7 @@ angular.module('colorpicker.module', [])
     }
   };
 })
-.directive('colorpicker', ['$window', '$document', '$compile', '$rootScope', 'Color', 'Slider', 'Helper', 'Swatches', function ($window, $document, $compile, $rootScope, Color, Slider, Helper, Swatches) {
+.directive('colorpicker', ['$window', '$document', '$compile', '$rootScope', '$timeout', 'Color', 'Slider', 'Helper', 'Swatches', function ($window, $document, $compile, $rootScope, $timeout, Color, Slider, Helper, Swatches) {
   'use strict';
   return {
     require: '?ngModel',
@@ -466,14 +466,18 @@ angular.module('colorpicker.module', [])
         ngModel.$render = function () {
           elem.val(ngModel.$viewValue);
         };
-        $scope.$watch(attrs.ngModel, function(newVal) {
-          console.log('RIGHT NOW 1')
-          update();
 
-          if (withInput) {
-            pickerColorInput.val(newVal);
-          }
-        });
+        $timeout(function() {
+            $scope.$watch(attrs.ngModel, function(newVal) {
+            console.log('RIGHT NOW 1')
+            update();
+
+            if (withInput) {
+                pickerColorInput.val(newVal);
+            }
+            });
+        }, 100);
+
       }
 
       elem.on('$destroy', function() {
