@@ -296,11 +296,16 @@ angular.module('colorpicker.module', [])
       };
 
       $scope.toggleStripes = function (event) {
-        $rootScope.$broadcast('toggleStripes', {streamid: streamid});
+
+        console.log('stream id and stream index', attrs.streamid, attrs.streamindex);
+        payload = {streamid: streamid};
+        if isNaN(attrs.streamid) {
+            payload.streamindex = attrs.streamindex
+        }
+        $rootScope.$broadcast('toggleStripes', payload);
       };
 
       $scope.palette = false;
-      $scope.swatches = true;
 
       $scope.toggleSwatchStrip = function (color) {
         if (attrs.dashed == 'true')  {
