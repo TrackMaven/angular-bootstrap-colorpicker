@@ -283,7 +283,11 @@ angular.module('colorpicker.module', [])
   return {
     require: '?ngModel',
     restrict: 'A',
+    scope: true,
     link: function ($scope, elem, attrs, ngModel) {
+     
+
+      console.log($scope.graph.streams);
 
       angular.element($window).bind('resize', function () {
         hideColorpickerTemplate();
