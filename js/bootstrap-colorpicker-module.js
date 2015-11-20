@@ -286,7 +286,7 @@ angular.module('colorpicker.module', [])
     link: function ($scope, elem, attrs, ngModel) {
 
 
-      console.log('WHAT');
+      console.log('WHAT 1');
 
       angular.element($window).bind('resize', function () {
         hideColorpickerTemplate();
@@ -366,6 +366,8 @@ angular.module('colorpicker.module', [])
       pickerColorPointers = colorpickerTemplate.find('i');
 
       $compile(colorpickerTemplate)($scope);
+
+      console.log('WHAT 2');
 
       if (withInput) {
         var pickerColorInput = colorpickerTemplate.find('input');
@@ -477,6 +479,9 @@ angular.module('colorpicker.module', [])
           sliderAlpha.css.backgroundColor = pickerColor.toHex();
         }
       };
+
+
+      console.log('WHAT 1');
 
       var mousemove = function (event) {
         var
