@@ -629,11 +629,7 @@ angular.module('colorpicker.module', [])
             }
           };
 
-          var switchButtonElement = document.getElementById("switch-colorpicker");
-
-          angular.element(switchButtonElement).on('click', function() {
-            $scope.palette = !$scope.palette;
-            $scope.swatches = !$scope.swatches;
+          angular.element(document.getElementById("switch-colorpicker")).on('click', function() {
             switchColorpickerView();
           });
 
