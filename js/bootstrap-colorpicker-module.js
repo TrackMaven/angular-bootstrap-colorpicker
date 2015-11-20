@@ -635,9 +635,9 @@ angular.module('colorpicker.module', [])
             hideColorpickerTemplate();
           });
 
-          var switchButtonElement = document.getElementById("switch-colorpicker");
+          var switchButtonElement = $("#switch-colorpicker");
 
-          angular.element(switchButtonElement).on('click', function() {
+          switchButtonElement.on('click', function() {
             console.log('switchButtonElement is being clicked upon')
             $scope.palette = !$scope.palette;
             $scope.swatches = !$scope.swatches;
