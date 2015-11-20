@@ -283,11 +283,7 @@ angular.module('colorpicker.module', [])
   return {
     require: '?ngModel',
     restrict: 'A',
-    scope: true,
     link: function ($scope, elem, attrs, ngModel) {
-     
-
-      console.log($scope.graph.streams);
 
       angular.element($window).bind('resize', function () {
         hideColorpickerTemplate();
@@ -300,7 +296,7 @@ angular.module('colorpicker.module', [])
       };
 
       $scope.toggleStripes = function (event) {
-        console.log('stream id and stream', attrs.streamid);
+        console.log('stream id and stream index', attrs.streamid);
         var payload = {streamid: streamid};
         $rootScope.$broadcast('toggleStripes', payload);
       };
