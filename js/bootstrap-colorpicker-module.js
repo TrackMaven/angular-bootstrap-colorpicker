@@ -467,6 +467,7 @@ angular.module('colorpicker.module', [])
           elem.val(ngModel.$viewValue);
         };
         $scope.$watch(attrs.ngModel, function(newVal) {
+          console.log('RIGHT NOW 1')
           update();
 
           if (withInput) {
@@ -536,9 +537,9 @@ angular.module('colorpicker.module', [])
         pickerColorPointers.eq(1).css('top', 100 * (1 - pickerColor.value.h) + 'px');
         pickerColorPointers.eq(2).css('top', 100 * (1 - pickerColor.value.a) + 'px');
         previewColor();
-            // emit event for color change
-            $rootScope.$broadcast('colorChange');
-          };
+        // emit event for color change
+        $rootScope.$broadcast('colorChange');
+        };
 
           var getColorpickerTemplatePosition = function() {
             var
@@ -584,6 +585,7 @@ angular.module('colorpicker.module', [])
           var showColorpickerTemplate = function() {
 
             if (!colorpickerTemplate.hasClass('colorpicker-visible')) {
+              console.log('what about  now?')
               update();
               colorpickerTemplate
               .addClass('colorpicker-visible')
