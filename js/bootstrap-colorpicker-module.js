@@ -338,10 +338,10 @@ angular.module('colorpicker.module', [])
                     '</div>' +
                     '<div class="swatch-controls clearfix">'+
                       '<div class="left">' +
-                        switchButton +
+                        stripesCheckBox +
                       '</div>' +
                       '<div class="right">' +
-                        stripesCheckBox +
+                        switchButton +
                       '</div>' +
                     '</div>' +
                   '</div>' +
