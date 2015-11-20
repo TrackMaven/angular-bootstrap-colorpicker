@@ -299,7 +299,7 @@ angular.module('colorpicker.module', [])
 
         console.log('stream id and stream index', attrs.streamid, attrs.streamindex);
         payload = {streamid: streamid};
-        if isNaN(attrs.streamid) {
+        if (isNaN(attrs.streamid)) {
             payload.streamindex = attrs.streamindex
         }
         $rootScope.$broadcast('toggleStripes', payload);
