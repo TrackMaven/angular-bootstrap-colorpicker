@@ -294,9 +294,14 @@ angular.module('colorpicker.module', [])
 
       $scope.swatchColors = Swatches.getSwatches();
 
+      console.log('WHAT 1.1');
+
       $scope.selectColor = function (color) {
         ngModel.$setViewValue(color)
       };
+
+
+      console.log('WHAT 1.2');
 
       $scope.toggleStripes = function (event) {
         console.log('Inside directive', attrs.streamid);
@@ -313,13 +318,16 @@ angular.module('colorpicker.module', [])
           return color
         }
       }
+
+      console.log('WHAT 1.3');
     
       $scope.labelUUID = 
       $scope.streamPickerLabelId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
           var r = crypto.getRandomValues(new Uint8Array(1))[0]%16|0, v = c == 'x' ? r : (r&0x3|0x8);
           return v.toString(16);
       });
-
+        
+      console.log('WHAT 1.4');
       var
       streamid = attrs.streamid,
       thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
