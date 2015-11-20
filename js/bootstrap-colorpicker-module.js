@@ -319,7 +319,7 @@ angular.module('colorpicker.module', [])
       target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
       withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
       inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
-      switchButton = !inline ? '<div ng-if="!palette" class="switch-colorpicker" ng-click="switchColorpickerView();" stop-propagation><i class="icon icon-paintbrush"></i></div><div class="switch-colorpicker" ng-if="palette" ng-click="switchColorpickerView();" stop-propagation><i class="icon icon-swatches"></i></div>' : '',
+      switchButton = !inline ? '<div ng-if="!palette" class="switch-colorpicker" ng-click="switchColorpickerView($event);" stop-propagation><i class="icon icon-paintbrush"></i></div><div class="switch-colorpicker" ng-if="palette" ng-click="switchColorpickerView($event);" stop-propagation><i class="icon icon-swatches"></i></div>' : '',
       stripesCheckBox = !inline ? '<input class="experimental-checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
       template =
@@ -615,8 +615,8 @@ angular.module('colorpicker.module', [])
             }
           };
 
-          var switchColorpickerView = function() {
-              console.log('this is happening for real');
+          var switchColorpickerView = function(event) {
+              console.log('this is happening for real', event);
               $scope.palette = !scope.palette;
           };
 
