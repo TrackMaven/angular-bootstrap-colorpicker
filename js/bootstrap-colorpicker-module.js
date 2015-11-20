@@ -617,7 +617,7 @@ angular.module('colorpicker.module', [])
 
           $scope.switchColorpickerView = function(event) {
               console.log('this is happening for real', event);
-              $scope.palette = !scope.palette;
+              $scope.palette = !$scope.palette;
           };
 
           if (attrs.colorpickerIsOpen) {
