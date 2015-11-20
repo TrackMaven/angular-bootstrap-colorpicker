@@ -615,7 +615,7 @@ angular.module('colorpicker.module', [])
             }
           };
 
-          var switchColorpickerView = function(event) {
+          $scope.switchColorpickerView = function(event) {
               console.log('this is happening for real', event);
               $scope.palette = !scope.palette;
           };
