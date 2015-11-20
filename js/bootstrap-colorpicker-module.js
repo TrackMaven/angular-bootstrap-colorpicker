@@ -319,7 +319,7 @@ angular.module('colorpicker.module', [])
       target = angular.isDefined(attrs.colorpickerParent) ? elem.parent() : angular.element(document.body),
       withInput = angular.isDefined(attrs.colorpickerWithInput) ? attrs.colorpickerWithInput : false,
       inputTemplate = withInput ? '<input type="text" name="colorpicker-input">' : '',
-      switchButton = !inline ? '<div id="switch-colorpicker" ng-if="!palette" stop-propagation><i class="icon icon-paintbrush"></i></div><div id="switch-colorpicker" ng-if="palette" stop-propagation><i class="icon icon-swatches"></i></div>' : '',
+      switchButton = !inline ? '<div id="switch-colorpicker" ng-if="$scope.swatches" stop-propagation><i class="icon icon-paintbrush"></i></div><div id="switch-colorpicker" ng-if="$scope.palette" stop-propagation><i class="icon icon-swatches"></i></div>' : '',
       stripesCheckBox = !inline ? '<input class="experimental-checkbox left" type="checkbox" ng-click="toggleStripes()" id="stripes-checkbox"> <label class="inline-block left ml1" for="stripes-checkbox">STRIPES</label>' : '',
 
       template =
@@ -616,7 +616,6 @@ angular.module('colorpicker.module', [])
           };
 
           var switchColorpickerView = function() {
-            console.log('fired');
             var paletteElement = angular.element(document.getElementById("colorpicker-palette"));
             var swatchElement = angular.element(document.getElementById("colorpicker-swatch"));
 
@@ -624,10 +623,12 @@ angular.module('colorpicker.module', [])
               paletteElement.css('display','block');
               swatchElement.css('display','none');
               $scope.palette = true;
+              $scope.swatches = false;
             }
             else {
               paletteElement.css('display','none');
               swatchElement.css('display','block');
+              $scope.swatches = true;
               $scope.palette = false;
             }
           };
