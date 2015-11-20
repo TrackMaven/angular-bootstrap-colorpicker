@@ -632,7 +632,7 @@ angular.module('colorpicker.module', [])
 
           var switchButtonElement = document.getElementById("switch-colorpicker");
 
-          angular.element(switchButtonElement).on('click', function() {
+          angular.element(switchButtonElement).on('mousedown', function() {
             $scope.palette = !$scope.palette;
             $scope.swatches = !$scope.swatches;
             switchColorpickerView();
