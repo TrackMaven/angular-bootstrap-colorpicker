@@ -296,8 +296,8 @@ angular.module('colorpicker.module', [])
       };
 
       $scope.toggleStripes = function (event) {
-        console.log('stream id and stream index', attrs.streamid, attrs.streamindex);
-        var payload = {streamid: streamid, streamindex: attrs.streamindex};
+        console.log('stream id and stream', attrs.streamid);
+        var payload = {streamid: streamid};
         $rootScope.$broadcast('toggleStripes', payload);
       };
 
