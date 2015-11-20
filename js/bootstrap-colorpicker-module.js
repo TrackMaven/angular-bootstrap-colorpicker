@@ -623,18 +623,18 @@ angular.module('colorpicker.module', [])
             if (paletteElement.css('display') == 'none') {
               paletteElement.css('display','block');
               swatchElement.css('display','none');
+              $scope.palette = $scope.palette;
             }
             else {
               paletteElement.css('display','none');
               swatchElement.css('display','block');
+              $scope.palette = !$scope.palette;
             }
           };
 
           var switchButtonElement = document.getElementById("switch-colorpicker");
 
           angular.element(switchButtonElement).on('mousedown', function() {
-            $scope.palette = !$scope.palette;
-            $scope.swatches = !$scope.swatches;
             switchColorpickerView();
           });
 
