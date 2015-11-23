@@ -278,7 +278,7 @@ angular.module('colorpicker.module', [])
     }
   };
 })
-.directive('colorpicker', ['$window', '$document', '$compile', '$rootScope', '$timeout', 'Color', 'Slider', 'Helper', 'Swatches', function ($window, $document, $compile, $rootScope, $timeout, Color, Slider, Helper, Swatches) {
+.directive('colorpicker', ['$window', '$document', '$compile', '$timeout', 'Color', 'Slider', 'Helper', 'Swatches', function ($window, $document, $compile, $timeout, Color, Slider, Helper, Swatches) {
   'use strict';
   return {
     require: '?ngModel',
@@ -298,7 +298,7 @@ angular.module('colorpicker.module', [])
 
       $scope.toggleStripes = function (event) {
         var payload = {streamid: attrs.streamid};
-        $rootScope.$broadcast('toggleStripes', payload);
+        $scope.$emit('toggleStripes', payload);
       };
 
       $scope.palette = false;
@@ -526,7 +526,7 @@ angular.module('colorpicker.module', [])
         pickerColorPointers.eq(2).css('top', 100 * (1 - pickerColor.value.a) + 'px');
         previewColor();
         // emit event for color change
-        $rootScope.$broadcast('colorChange');
+        $scope.$emit('colorChange');
         };
 
           var getColorpickerTemplatePosition = function() {
