@@ -464,8 +464,11 @@ angular.module('colorpicker.module', [])
                     };
 
                     $timeout(function() {
-                        $scope.$watch(attrs.ngModel, function(newVal) {
-                            update();
+                        $scope.$watch(attrs.ngModel, function(newVal, oldVal) {
+                            // only trigger and update when the old value isn't equal to the new value of the color
+                            if (newVal != oldVal) {
+                                update();
+                            }
 
                             if (withInput) {
                                 pickerColorInput.val(newVal);
