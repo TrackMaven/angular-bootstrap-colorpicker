@@ -288,6 +288,7 @@ angular.module('colorpicker.module', [])
             restrict: 'A',
             link: function($scope, elem, attrs, ngModel) {
                 var
+                    unBindWatcher,
                     streamid = attrs.streamid,
                     thisFormat = attrs.colorpicker ? attrs.colorpicker : 'hex',
                     position = angular.isDefined(attrs.colorpickerPosition) ? attrs.colorpickerPosition : 'right',
@@ -458,25 +459,27 @@ angular.module('colorpicker.module', [])
                 target.append(colorpickerTemplate);
 
 
-                if (ngModel) {
-                    ngModel.$render = function() {
-                        elem.val(ngModel.$viewValue);
-                    };
 
-                    $timeout(function() {
-                        $scope.$watch(attrs.ngModel, function(newVal, oldVal) {
+
+                var bindWatcher = function() {
+                    if (ngModel) {
+                        ngModel.$render = function() {
+                            elem.val(ngModel.$viewValue);
+                        };
+
+                        // This returns a function that unbinds the watch
+                        return  $scope.$watch(attrs.ngModel, function(newVal, oldVal) {
                             // only trigger and update when the old value isn't equal to the new value of the color
                             if (newVal != oldVal) {
                                 update();
                             }
-
                             if (withInput) {
                                 pickerColorInput.val(newVal);
                             }
                         });
-                    }, 100);
 
-                }
+                    }
+                };
 
                 elem.on('$destroy', function() {
                     colorpickerTemplate.remove();
@@ -578,11 +581,14 @@ angular.module('colorpicker.module', [])
                 };
 
                 var documentMousedownHandler = function() {
+                    // De-register watchers
+                    unBindWatcher();
                     hideColorpickerTemplate();
                 };
 
                 var showColorpickerTemplate = function() {
-
+                    // Bind the unwatch function to a global variable inside the directive
+                    unBindWatcher = bindWatcher();
                     if (!colorpickerTemplate.hasClass('colorpicker-visible')) {
                         update();
                         colorpickerTemplate
