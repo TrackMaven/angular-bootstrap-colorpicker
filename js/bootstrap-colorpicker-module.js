@@ -469,10 +469,7 @@ angular.module('colorpicker.module', [])
 
                         // This returns a function that unbinds the watch
                         return  $scope.$watch(attrs.ngModel, function(newVal, oldVal) {
-                            // only trigger and update when the old value isn't equal to the new value of the color
-                            if (newVal != oldVal) {
-                                update();
-                            }
+                            update();
                             if (withInput) {
                                 pickerColorInput.val(newVal);
                             }
